@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
-    const [showCart, setShowCart] = useState<boolean>(false);
+  const [showCart, setShowCart] = useState<boolean>(false);
 
-
-    const Basket = () => setShowCart(true);
-    const hideBasket = () => setShowCart(false);
+  const Basket = () => setShowCart(true);
+  const hideBasket = () => setShowCart(false);
 
   return (
     <>
@@ -20,7 +20,7 @@ export const Header = () => {
                 <a className="navbar-brand" href="home-page-1.html">
                   <img
                     src="assets/img/logo/logo-1.png"
-                    alt="Product Description"
+                    alt="Image Description"
                   />
                 </a>
                 {/* End Logo */}
@@ -31,8 +31,8 @@ export const Header = () => {
                   <div className="g-py-10 g-pr-40">
                     <a
                       className="g-color-text g-color-black--hover g-color-black--focus g-font-size-16 g-text-underline--none--hover"
-                      href="!#"
-                    //   aria-haspopup="true"
+                      href="#"
+                      aria-haspopup="true"
                       aria-expanded="false"
                       aria-controls="searchform-1"
                       data-dropdown-event="hover"
@@ -95,14 +95,13 @@ export const Header = () => {
                 </div>
                 {/* End Wishlist */}
                 {/* Basket */}
-                <div className="u-basket d-inline-block" onMouseOver={Basket}
-                    onMouseLeave={hideBasket}>
-                  <a
+                <div className="u-basket d-inline-block">
+                  <Link
                     id="basket-bar-invoker"
                     className="u-icon-v1 g-color-text g-color-black--hover g-color-black--focus g-font-size-16 g-text-underline--none--hover g-ml-10"
-                    href="!#"
+                    to="/items"
                     aria-controls="basket-bar"
-                    // aria-haspopup="true"
+                    aria-haspopup="true"
                     aria-expanded="false"
                     data-dropdown-event="hover"
                     data-dropdown-target="#basket-bar"
@@ -111,15 +110,13 @@ export const Header = () => {
                     data-dropdown-hide-on-scroll="false"
                     data-dropdown-animation-in="fadeIn"
                     data-dropdown-animation-out="fadeOut"
-                    
                   >
                     <i className="d-inline-block icon-hotel-restaurant-105 u-line-icon-pro" />
                     <span className="align-bottom g-font-size-11">(4)</span>
-                  </a>
-                  {
-                    showCart ? <div
+                  </Link>
+                  <div
                     id="basket-bar"
-                    className="u-basket__bar u-dropdown--css-animation g-text-transform-none g-bg-white g-brd-around g-brd-gray-light-v4 g-mt-5 g-mt-25--sm"
+                    className="u-basket__bar u-dropdown--css-animation u-dropdown--hidden g-text-transform-none g-bg-white g-brd-around g-brd-gray-light-v4 g-mt-5 g-mt-25--sm"
                     aria-labelledby="basket-bar-invoker"
                   >
                     <div className="g-brd-bottom g-brd-gray-light-v4 g-pa-15 g-mb-10">
@@ -132,11 +129,11 @@ export const Header = () => {
                       <div className="u-basket__product g-brd-none g-px-20">
                         <div className="row no-gutters g-pb-5">
                           <div className="col-4 pr-3">
-                            <a className="u-basket__product-img" href="!#">
+                            <a className="u-basket__product-img" href="#">
                               <img
                                 className="img-fluid"
                                 src="../assets/img-temp/150x150/img1.jpg"
-                                alt="Product Description"
+                                alt="Image Description"
                               />
                             </a>
                           </div>
@@ -144,7 +141,7 @@ export const Header = () => {
                             <h6 className="g-font-weight-400 g-font-size-default">
                               <a
                                 className="g-color-black g-color-primary--hover g-text-underline--none--hover"
-                                href="!#"
+                                href="#"
                               >
                                 Black Glasses
                               </a>
@@ -166,11 +163,11 @@ export const Header = () => {
                       <div className="u-basket__product g-brd-none g-px-20">
                         <div className="row no-gutters g-pb-5">
                           <div className="col-4 pr-3">
-                            <a className="u-basket__product-img" href="!#">
+                            <a className="u-basket__product-img" href="#">
                               <img
                                 className="img-fluid"
                                 src="../assets/img-temp/150x150/img2.jpg"
-                                alt="Product Description"
+                                alt="Image Description"
                               />
                             </a>
                           </div>
@@ -178,7 +175,7 @@ export const Header = () => {
                             <h6 className="g-font-weight-400 g-font-size-default">
                               <a
                                 className="g-color-black g-color-primary--hover g-text-underline--none--hover"
-                                href="!#"
+                                href="#"
                               >
                                 Gloves
                               </a>
@@ -200,11 +197,11 @@ export const Header = () => {
                       <div className="u-basket__product g-brd-none g-px-20">
                         <div className="row no-gutters g-pb-5">
                           <div className="col-4 pr-3">
-                            <a className="u-basket__product-img" href="!#">
+                            <a className="u-basket__product-img" href="#">
                               <img
                                 className="img-fluid"
                                 src="../assets/img-temp/150x150/img3.jpg"
-                                alt="Product Description"
+                                alt="Image Description"
                               />
                             </a>
                           </div>
@@ -212,7 +209,7 @@ export const Header = () => {
                             <h6 className="g-font-weight-400 g-font-size-default">
                               <a
                                 className="g-color-black g-color-primary--hover g-text-underline--none--hover"
-                                href="!#"
+                                href="#"
                               >
                                 Chukka Shoes
                               </a>
@@ -234,11 +231,11 @@ export const Header = () => {
                       <div className="u-basket__product g-brd-none g-px-20">
                         <div className="row no-gutters g-pb-5">
                           <div className="col-4 pr-3">
-                            <a className="u-basket__product-img" href="!#">
+                            <a className="u-basket__product-img" href="#">
                               <img
                                 className="img-fluid"
                                 src="../assets/img-temp/150x150/img4.jpg"
-                                alt="Product Description"
+                                alt="Image Description"
                               />
                             </a>
                           </div>
@@ -246,7 +243,7 @@ export const Header = () => {
                             <h6 className="g-font-weight-400 g-font-size-default">
                               <a
                                 className="g-color-black g-color-primary--hover g-text-underline--none--hover"
-                                href="!#"
+                                href="#"
                               >
                                 Desk Clock
                               </a>
@@ -296,8 +293,7 @@ export const Header = () => {
                         Proceed to Checkout
                       </a>
                     </div>
-                  </div> : null
-                  }
+                  </div>
                 </div>
                 {/* End Basket */}
               </div>
@@ -316,7 +312,7 @@ export const Header = () => {
                 aria-expanded="false"
                 aria-controls="navBar"
                 data-toggle="collapse"
-                data-target="!#navBar"
+                data-target="#navBar"
               >
                 <span className="hamburger hamburger--slider">
                   <span className="hamburger-box">
@@ -336,7 +332,8 @@ export const Header = () => {
                     <a
                       id="nav-link--home"
                       className="nav-link text-uppercase g-color-primary--hover g-px-5 g-py-20"
-                      href="!#"
+                      href="#"
+                      aria-haspopup="true"
                       aria-expanded="false"
                       aria-controls="nav-submenu--home"
                     >
@@ -387,7 +384,8 @@ export const Header = () => {
                     <a
                       id="nav-link--pages"
                       className="nav-link text-uppercase g-color-primary--hover g-px-5 g-py-20"
-                      href="!#"
+                      href="#"
+                      aria-haspopup="true"
                       aria-expanded="false"
                       aria-controls="nav-submenu--pages"
                     >
@@ -404,7 +402,8 @@ export const Header = () => {
                         <a
                           id="nav-link--pages--grid-filter"
                           className="nav-link g-color-gray-dark-v4"
-                          href="!#"
+                          href="#"
+                          aria-haspopup="true"
                           aria-expanded="false"
                           aria-controls="nav-submenu--pages--grid-filter"
                         >
@@ -488,7 +487,8 @@ export const Header = () => {
                         <a
                           id="nav-link--pages--list-filter"
                           className="nav-link g-color-gray-dark-v4"
-                          href="!#"
+                          href="#"
+                          aria-haspopup="true"
                           aria-expanded="false"
                           aria-controls="nav-submenu--pages--list-filter"
                         >
@@ -572,7 +572,8 @@ export const Header = () => {
                         <a
                           id="nav-link--pages--left-right-category"
                           className="nav-link g-color-gray-dark-v4"
-                          href="!#"
+                          href="#"
+                          aria-haspopup="true"
                           aria-expanded="false"
                           aria-controls="nav-submenu--pages--left-right-category"
                         >
@@ -659,7 +660,8 @@ export const Header = () => {
                         <a
                           id="nav-link--pages--single-product"
                           className="nav-link g-color-gray-dark-v4"
-                          href="!#"
+                          href="#"
+                          aria-haspopup="true"
                           aria-expanded="false"
                           aria-controls="nav-submenu--pages--single-product"
                         >
@@ -710,7 +712,8 @@ export const Header = () => {
                         <a
                           id="nav-link--pages--checkout"
                           className="nav-link g-color-gray-dark-v4"
-                          href="!#"
+                          href="#"
+                          aria-haspopup="true"
                           aria-expanded="false"
                           aria-controls="nav-submenu--pages--checkout"
                         >
@@ -772,7 +775,8 @@ export const Header = () => {
                         <a
                           id="nav-link--pages--account"
                           className="nav-link g-color-gray-dark-v4"
-                          href="!#"
+                          href="#"
+                          aria-haspopup="true"
                           aria-expanded="false"
                           aria-controls="nav-submenu--pages--account"
                         >
@@ -972,7 +976,8 @@ export const Header = () => {
                     <a
                       id="mega-menu-label-3"
                       className="nav-link text-uppercase g-color-primary--hover g-px-5 g-py-20"
-                      href="!#"
+                      href="#"
+                      aria-haspopup="true"
                       aria-expanded="false"
                     >
                       Categories
@@ -994,7 +999,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Wall Decor
                                 </a>
@@ -1002,7 +1007,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Pillows &amp; Throws
                                 </a>
@@ -1010,7 +1015,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Window Treatments
                                 </a>
@@ -1018,7 +1023,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Mirrors
                                 </a>
@@ -1034,7 +1039,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Letter Block
                               </a>
@@ -1042,7 +1047,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Glass Sconce
                               </a>
@@ -1050,7 +1055,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Risa Storage Jar
                               </a>
@@ -1058,7 +1063,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Model Plane
                               </a>
@@ -1076,7 +1081,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Coffee &amp; Tea
                                 </a>
@@ -1084,7 +1089,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Cooking &amp; Baking
                                 </a>
@@ -1092,7 +1097,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Cutlery &amp; Cutting
                                 </a>
@@ -1100,7 +1105,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Serving
                                 </a>
@@ -1108,7 +1113,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Food Storage
                                 </a>
@@ -1125,7 +1130,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Writing Instruments
                                 </a>
@@ -1133,7 +1138,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Bookcases
                                 </a>
@@ -1141,7 +1146,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Filing Cabinets
                                 </a>
@@ -1160,7 +1165,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Bridgers 59" Floor Lamp
                                 </a>
@@ -1168,7 +1173,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Miltiades 27" Table Lamp
                                 </a>
@@ -1184,7 +1189,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Washington Console Table
                               </a>
@@ -1192,7 +1197,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Anfield Coffee Table
                               </a>
@@ -1200,7 +1205,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Banbury 2 Drawer End Table
                               </a>
@@ -1208,7 +1213,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Landsdowne 53" Tv Stand
                               </a>
@@ -1216,7 +1221,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Sevan Swivel Barrel Chair
                               </a>
@@ -1224,7 +1229,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Enfield Credenza
                               </a>
@@ -1237,7 +1242,7 @@ export const Header = () => {
                             <img
                               className="img-fluid"
                               src="assets/img-temp/700x700/img1.jpg"
-                              alt="Product Description"
+                              alt="Image Description"
                             />
                             <div className="g-pos-abs g-bottom-30 g-left-30">
                               <span className="d-block g-color-gray-dark-v4 mb-2">
@@ -1251,7 +1256,7 @@ export const Header = () => {
                               </span>
                               <a
                                 className="btn u-btn-primary u-shadow-v29 g-font-size-12 text-uppercase g-py-10 g-px-20"
-                                href="!#"
+                                href="#"
                               >
                                 Add to Cart
                               </a>
@@ -1273,7 +1278,8 @@ export const Header = () => {
                     <a
                       id="mega-menu-label-2"
                       className="nav-link text-uppercase g-color-primary--hover g-px-5 g-py-20"
-                      href="!#"
+                      href="#"
+                      aria-haspopup="true"
                       aria-expanded="false"
                     >
                       Watch
@@ -1295,7 +1301,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Ladies' Parker Chronograph
                                 </a>
@@ -1303,7 +1309,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Emporio Armani
                                 </a>
@@ -1311,7 +1317,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Fossil Men's Grant Chronograph
                                 </a>
@@ -1319,7 +1325,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Olivia Burton{" "}
                                 </a>
@@ -1327,7 +1333,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Ladies' Big White Dial
                                 </a>
@@ -1335,7 +1341,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Men's Grant Automatic
                                 </a>
@@ -1343,7 +1349,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Ladies' The Roxy
                                 </a>
@@ -1351,7 +1357,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Sport Watch
                                 </a>
@@ -1359,7 +1365,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Burberry Ladies' The City
                                 </a>
@@ -1367,7 +1373,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Tissot
                                 </a>
@@ -1390,7 +1396,7 @@ export const Header = () => {
                             <span className="d-block g-color-primary g-font-weight-700 g-font-size-25">
                               $273.00
                             </span>
-                            <a className="u-link-v2" href="!#" />
+                            <a className="u-link-v2" href="#" />
                           </article>
                         </div>
                       </div>
@@ -1408,7 +1414,8 @@ export const Header = () => {
                     <a
                       id="mega-menu-label-4"
                       className="nav-link text-uppercase g-color-primary--hover g-px-5 g-py-20"
-                      href="!#"
+                      href="#"
+                      aria-haspopup="true"
                       aria-expanded="false"
                     >
                       Catalogue
@@ -1430,7 +1437,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   New in
                                 </a>
@@ -1438,7 +1445,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Coats &amp; Jackets
                                 </a>
@@ -1446,7 +1453,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Jeans
                                 </a>
@@ -1454,7 +1461,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Dresses
                                 </a>
@@ -1462,7 +1469,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Shorts
                                   <span className="u-label g-bg-primary rounded g-ml-10">
@@ -1473,7 +1480,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Skirts
                                 </a>
@@ -1481,7 +1488,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   T-Shirts
                                 </a>
@@ -1497,7 +1504,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Boots
                               </a>
@@ -1505,7 +1512,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 FLats
                               </a>
@@ -1513,7 +1520,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Heels
                               </a>
@@ -1521,7 +1528,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Sandals
                               </a>
@@ -1539,7 +1546,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   All accessories
                                 </a>
@@ -1547,7 +1554,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Bags &amp; Purses
                                 </a>
@@ -1555,7 +1562,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Scarvs &amp; Hats
                                 </a>
@@ -1563,7 +1570,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Jewellery
                                 </a>
@@ -1571,7 +1578,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Fragrance &amp; Beauty
                                 </a>
@@ -1588,7 +1595,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Linger
                                   <span className="u-label g-bg-primary rounded g-ml-10">
@@ -1599,7 +1606,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Slippers
                                 </a>
@@ -1615,7 +1622,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Nightwear
                               </a>
@@ -1623,7 +1630,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Socks
                               </a>
@@ -1640,7 +1647,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 New in
                               </a>
@@ -1648,7 +1655,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Coats &amp; Jackets
                                 <span className="u-label g-bg-primary rounded g-ml-10">
@@ -1659,7 +1666,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Jeans
                               </a>
@@ -1667,7 +1674,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Dresses
                               </a>
@@ -1675,7 +1682,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Shorts
                               </a>
@@ -1683,7 +1690,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Skirts
                               </a>
@@ -1691,7 +1698,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 T-shirts
                               </a>
@@ -1699,7 +1706,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Boots
                               </a>
@@ -1707,7 +1714,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Flats
                               </a>
@@ -1715,7 +1722,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Heels
                               </a>
@@ -1723,7 +1730,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Sandals
                               </a>
@@ -1731,7 +1738,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Sports
                               </a>
@@ -1739,7 +1746,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Socks
                               </a>
@@ -1747,7 +1754,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Tights
                               </a>
@@ -1765,7 +1772,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   All accessories
                                 </a>
@@ -1773,7 +1780,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Bags &amp; Purses
                                 </a>
@@ -1781,7 +1788,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Scarvs &amp; Hats
                                 </a>
@@ -1789,7 +1796,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Jewellery
                                 </a>
@@ -1797,7 +1804,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Fragrance &amp; Beauty
                                 </a>
@@ -1814,7 +1821,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Linger
                                   <span className="u-label g-bg-primary rounded g-ml-10">
@@ -1825,7 +1832,7 @@ export const Header = () => {
                               <li>
                                 <a
                                   className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                  href="!#"
+                                  href="#"
                                 >
                                   Slippers
                                 </a>
@@ -1841,7 +1848,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Nightwear
                               </a>
@@ -1849,7 +1856,7 @@ export const Header = () => {
                             <li>
                               <a
                                 className="d-block g-color-text g-color-primary--hover g-text-underline--none--hover g-py-5"
-                                href="!#"
+                                href="#"
                               >
                                 Socks
                               </a>
@@ -1872,7 +1879,8 @@ export const Header = () => {
                     <a
                       id="mega-menu-label-5"
                       className="nav-link text-uppercase g-color-primary--hover g-px-5 g-py-20"
-                      href="!#"
+                      href="#"
+                      aria-haspopup="true"
                       aria-expanded="false"
                     >
                       New Arrivals
@@ -1881,7 +1889,7 @@ export const Header = () => {
                     {/* Mega Menu */}
                     <div
                       className="w-100 hs-mega-menu u-shadow-v11 g-text-transform-none g-brd-top g-brd-primary g-brd-top-2 g-bg-white g-pa-30 g-mt-7"
-                      aria-labelledby="#mega-menu-label-5"
+                      aria-labelledby="mega-menu-label-5"
                     >
                       <div className="row">
                         <div className="col-md-4 g-mb-30 g-mb-0--md">
@@ -1899,7 +1907,7 @@ export const Header = () => {
                               </span>
                               <a
                                 className="btn u-btn-white g-brd-primary--hover g-color-white--hover g-bg-primary--hover g-font-size-11 text-uppercase g-py-10 g-px-20"
-                                href="!#"
+                                href="#"
                               >
                                 Shop Now
                               </a>
@@ -1922,7 +1930,7 @@ export const Header = () => {
                               </span>
                               <a
                                 className="btn u-btn-white g-brd-primary--hover g-color-white--hover g-bg-primary--hover g-font-size-11 text-uppercase g-py-10 g-px-20"
-                                href="!#"
+                                href="#"
                               >
                                 Shop Now
                               </a>
@@ -1945,7 +1953,7 @@ export const Header = () => {
                               </span>
                               <a
                                 className="btn u-btn-white g-brd-primary--hover g-color-white--hover g-bg-primary--hover g-font-size-11 text-uppercase g-py-10 g-px-20"
-                                href="!#"
+                                href="#"
                               >
                                 Shop Now
                               </a>

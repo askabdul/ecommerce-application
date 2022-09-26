@@ -1,16 +1,17 @@
-import React from 'react';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
 import { Content } from './components/Content/Content';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
+import { Items } from './components/Items/Items';
 
 function App() {
   return (
     <main>
       <Header />
-
-      <Content />
-
+      <Routes>
+        <Route path='/' element={<Content />} />
+        <Route path='/items' element={<Items />} />
+      </Routes>
       <Footer />
     </main>
   );
