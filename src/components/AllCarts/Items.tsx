@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { AllCarts } from "../../database/items";
+import { Cart } from "../Cart/Cart";
 
 export const Items = () => {
   const [OneActive, setOneActive] = useState<string>("active");
@@ -174,137 +176,11 @@ export const Items = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {/* Item*/}
-                          <tr className="g-brd-bottom g-brd-gray-light-v3">
-                            <td className="text-left g-py-25">
-                              <img
-                                className="d-inline-block g-width-100 mr-4"
-                                src="assets/img-temp/150x150/img6.jpg"
-                                alt="Image Description"
-                              />
-                              <div className="d-inline-block align-middle">
-                                <h4 className="h6 g-color-black">Sneaker</h4>
-                                <ul className="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
-                                  <li>Color: Black</li>
-                                  <li>Size: MD</li>
-                                </ul>
-                              </div>
-                            </td>
-                            <td className="g-color-gray-dark-v2 g-font-size-13">
-                              $ 87.00
-                            </td>
-                            <td>
-                              <div className="js-quantity input-group u-quantity-v1 g-width-80 g-brd-primary--focus">
-                                <input
-                                  className="js-result form-control text-center g-font-size-13 rounded-0 g-pa-0"
-                                  type="text"
-                                  defaultValue={1}
-                                  readOnly
-                                />
-                                <div className="input-group-addon d-flex align-items-center g-width-30 g-brd-gray-light-v2 g-bg-white g-font-size-12 rounded-0 g-px-5 g-py-6">
-                                  <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" />
-                                  <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" />
-                                </div>
-                              </div>
-                            </td>
-                            <td className="text-right g-color-black">
-                              <span className="g-color-gray-dark-v2 g-font-size-13 mr-4">
-                                $ 87.00
-                              </span>
-                              <span className="g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
-                                <i className="mt-auto fa fa-trash" />
-                              </span>
-                            </td>
-                          </tr>
-                          {/* End Item*/}
-                          {/* Item*/}
-                          <tr className="g-brd-bottom g-brd-gray-light-v3">
-                            <td className="text-left g-py-25">
-                              <img
-                                className="d-inline-block g-width-100 mr-4"
-                                src="assets/img-temp/150x150/img3.jpg"
-                                alt="Image Description"
-                              />
-                              <div className="d-inline-block align-middle">
-                                <h4 className="h6 g-color-black">
-                                  Chukka Shoes
-                                </h4>
-                                <ul className="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
-                                  <li>Color: Black</li>
-                                  <li>Size: MD</li>
-                                </ul>
-                              </div>
-                            </td>
-                            <td className="g-color-gray-dark-v2 g-font-size-13">
-                              $ 160.00
-                            </td>
-                            <td>
-                              <div className="js-quantity input-group u-quantity-v1 g-width-80 g-brd-primary--focus">
-                                <input
-                                  className="js-result form-control text-center g-font-size-13 rounded-0 g-pa-0"
-                                  type="text"
-                                  defaultValue={2}
-                                  readOnly
-                                />
-                                <div className="input-group-addon d-flex align-items-center g-width-30 g-brd-gray-light-v2 g-bg-white g-font-size-12 rounded-0 g-px-5 g-py-6">
-                                  <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" />
-                                  <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" />
-                                </div>
-                              </div>
-                            </td>
-                            <td className="text-right g-color-black">
-                              <span className="g-color-gray-dark-v2 g-font-size-13 mr-4">
-                                $ 320.00
-                              </span>
-                              <span className="g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
-                                <i className="mt-auto fa fa-trash" />
-                              </span>
-                            </td>
-                          </tr>
-                          {/* End Item*/}
-                          {/* Item*/}
-                          <tr>
-                            <td className="text-left g-pt-25">
-                              <img
-                                className="d-inline-block g-width-100 mr-4"
-                                src="assets/img-temp/150x150/img7.jpg"
-                                alt="Image Description"
-                              />
-                              <div className="d-inline-block align-middle">
-                                <h4 className="h6 g-color-black">Desk Clock</h4>
-                                <ul className="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
-                                  <li>Color: Brown Wood</li>
-                                  <li>Type: Desk</li>
-                                </ul>
-                              </div>
-                            </td>
-                            <td className="g-color-gray-dark-v2 g-font-size-13">
-                              $ 47.00
-                            </td>
-                            <td>
-                              <div className="js-quantity input-group u-quantity-v1 g-width-80 g-brd-primary--focus">
-                                <input
-                                  className="js-result form-control text-center g-font-size-13 rounded-0 g-pa-0"
-                                  type="text"
-                                  defaultValue={1}
-                                  readOnly
-                                />
-                                <div className="input-group-addon d-flex align-items-center g-width-30 g-brd-gray-light-v2 g-bg-white g-font-size-12 rounded-0 g-px-5 g-py-6">
-                                  <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" />
-                                  <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" />
-                                </div>
-                              </div>
-                            </td>
-                            <td className="text-right g-color-black">
-                              <span className="g-color-gray-dark-v2 g-font-size-13 mr-4">
-                                $ 47.00
-                              </span>
-                              <span className="g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
-                                <i className="mt-auto fa fa-trash" />
-                              </span>
-                            </td>
-                          </tr>
-                          {/* End Item */}
+                          {
+                            AllCarts.map((cart) => (
+                              <Cart key={cart.id} cart={cart}/>
+                            ))
+                          }
                         </tbody>
                       </table>
                     </div>
