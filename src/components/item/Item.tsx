@@ -1,36 +1,53 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AllItems, item } from "../../database/items";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import {
+  incrementQty,
+  decrementQty,
+  selectCart,
+  addCart,
+} from "../../features/Cart/cartSlice";
 
-import img1 from './../../images/650x750/img1.jpg';
-import img2 from './../../images/650x750/img2.jpg';
-import img3 from './../../images/650x750/img3.jpg';
+import img1 from "./../../images/650x750/img1.jpg";
+import img2 from "./../../images/650x750/img2.jpg";
+import img3 from "./../../images/650x750/img3.jpg";
 
-import img4 from './../../images/250x170/img1.jpg';
-import img5 from './../../images/250x170/img2.jpg';
-import img6 from './../../images/250x170/img3.jpg';
-
-
+import img4 from "./../../images/250x170/img1.jpg";
+import img5 from "./../../images/250x170/img2.jpg";
+import img6 from "./../../images/250x170/img3.jpg";
 
 export const Item = () => {
+  const [param, setParam] = useState<number>(0);
+  const [OneItem, setOneItem] = useState<item>();
+  const [qty, setQty] = useState<number>(1);
 
-    const [param, setParam] = useState<number>(0);
+  const incQty = () => {
+    setQty((qty) => qty + 1);
+  };
 
-    const [OneItem, setOneItem] = useState<item>()
+  const decQty = () => {
+    setQty((prevQty) => {
+      if (prevQty - 1 < 1) return 1;
 
-    const { id } = useParams();
+      return prevQty - 1;
+    });
+  };
 
-    
-    useEffect(() => {
-        if(id !== undefined) {
-            setParam(+id)
+  const { id } = useParams();
 
-            const sample = AllItems.find(one => one.id === param);
-    
-            setOneItem(sample)
-        }
+  const dispatch = useAppDispatch();
 
-    },[param, id]);
+  const { totalQuant } = useAppSelector(selectCart);
+  
+
+  useEffect(() => {
+    if (id !== undefined) {
+      setParam(+id);
+      const sample = AllItems.find((one) => one.id === param);
+      setOneItem(sample);      
+    }
+  }, [param, id]);
 
   return (
     <>
@@ -61,28 +78,160 @@ export const Item = () => {
         {/* Product Description */}
         <div className="container g-py-50">
           <div className="row">
-          <div className="col-lg-7">
-  {/* Carousel */}
-  <div id="carouselCus1" className="js-carousel g-pt-10 g-mb-10 slick-initialized slick-slider" data-infinite="true" data-fade="true" data-arrows-classes="u-arrow-v1 g-brd-around g-brd-white g-absolute-centered--y g-width-45 g-height-45 g-font-size-14 g-color-white g-color-primary--hover rounded-circle" data-arrow-left-classes="fa fa-angle-left g-left-40" data-arrow-right-classes="fa fa-angle-right g-right-40" data-nav-for="#carouselCus2"><div className="js-prev u-arrow-v1 g-brd-around g-brd-white g-absolute-centered--y g-width-45 g-height-45 g-font-size-14 g-color-white g-color-primary--hover rounded-circle fa fa-angle-left g-left-40 slick-arrow" style={{}} />
-    <div className="slick-list draggable"><div className="slick-track" style={{opacity: 1, width: 1905}}><div className="js-slide g-bg-cover g-bg-black-opacity-0_1--after slick-slide slick-current slick-active" data-slick-index={0} aria-hidden="false" tabIndex={0} style={{width: 635, position: 'relative', left: 0, top: 0, zIndex: 999, opacity: 1, height: 'auto'}}>
-          <img className="img-fluid w-100" src={img1} alt="Image Description" />
-        </div><div className="js-slide g-bg-cover g-bg-black-opacity-0_1--after slick-slide" data-slick-index={1} aria-hidden="true" tabIndex={-1} style={{width: 635, position: 'relative', left: '-635px', top: 0, zIndex: 998, opacity: 0, height: 'auto'}}>
-          <img className="img-fluid w-100" src={img2} alt="Image Description" />
-        </div><div className="js-slide g-bg-cover g-bg-black-opacity-0_1--after slick-slide" data-slick-index={2} aria-hidden="true" tabIndex={-1} style={{width: 635, position: 'relative', left: '-1270px', top: 0, zIndex: 998, opacity: 0, height: 'auto'}}>
-          <img className="img-fluid w-100" src={img3} alt="Image Description" />
-        </div></div></div>
-    <div className="js-next u-arrow-v1 g-brd-around g-brd-white g-absolute-centered--y g-width-45 g-height-45 g-font-size-14 g-color-white g-color-primary--hover rounded-circle fa fa-angle-right g-right-40 slick-arrow" style={{}} /></div>
-  <div id="carouselCus2" className="js-carousel text-center u-carousel-v3 g-mx-minus-5 slick-initialized slick-slider slick-transform-off" data-infinite="true" data-center-mode="true" data-slides-show={3} data-is-thumbs="true" data-focus-on-select="false" data-nav-for="#carouselCus1">
-    <div className="slick-list draggable" style={{padding: 0}}><div className="slick-track" style={{opacity: 1, width: 645, transform: 'translate3d(0px, 0px, 0px)'}}><div className="js-slide g-cursor-pointer g-px-5 slick-slide slick-current slick-center" data-slick-index={0} aria-hidden="true" tabIndex={0} style={{width: 215, height: 'auto'}}>
-          <img className="img-fluid" src={img4} alt="Image Description" />
-        </div><div className="js-slide g-cursor-pointer g-px-5 slick-slide" data-slick-index={1} aria-hidden="true" tabIndex={0} style={{width: 215, height: 'auto'}}>
-          <img className="img-fluid" src={img5} alt="Image Description" />
-        </div><div className="js-slide g-cursor-pointer g-px-5 slick-slide slick-center" data-slick-index={2} aria-hidden="true" tabIndex={0} style={{width: 215, height: 'auto'}}>
-          <img className="img-fluid" src={img6} alt="Image Description" />
-        </div></div></div>
-  </div>
-  {/* End Carousel */}
-</div>
+            <div className="col-lg-7">
+              {/* Carousel */}
+              <div
+                id="carouselCus1"
+                className="js-carousel g-pt-10 g-mb-10 slick-initialized slick-slider"
+                data-infinite="true"
+                data-fade="true"
+                data-arrows-classes="u-arrow-v1 g-brd-around g-brd-white g-absolute-centered--y g-width-45 g-height-45 g-font-size-14 g-color-white g-color-primary--hover rounded-circle"
+                data-arrow-left-classes="fa fa-angle-left g-left-40"
+                data-arrow-right-classes="fa fa-angle-right g-right-40"
+                data-nav-for="#carouselCus2"
+              >
+                <div
+                  className="js-prev u-arrow-v1 g-brd-around g-brd-white g-absolute-centered--y g-width-45 g-height-45 g-font-size-14 g-color-white g-color-primary--hover rounded-circle fa fa-angle-left g-left-40 slick-arrow"
+                  style={{}}
+                />
+                <div className="slick-list draggable">
+                  <div
+                    className="slick-track"
+                    style={{ opacity: 1, width: 1905 }}
+                  >
+                    <div
+                      className="js-slide g-bg-cover g-bg-black-opacity-0_1--after slick-slide slick-current slick-active"
+                      data-slick-index={0}
+                      aria-hidden="false"
+                      tabIndex={0}
+                      style={{
+                        width: 635,
+                        position: "relative",
+                        left: 0,
+                        top: 0,
+                        zIndex: 999,
+                        opacity: 1,
+                        height: "auto",
+                      }}
+                    >
+                      <img
+                        className="img-fluid w-100"
+                        src={img1}
+                        alt="Image Description"
+                      />
+                    </div>
+                    <div
+                      className="js-slide g-bg-cover g-bg-black-opacity-0_1--after slick-slide"
+                      data-slick-index={1}
+                      aria-hidden="true"
+                      tabIndex={-1}
+                      style={{
+                        width: 635,
+                        position: "relative",
+                        left: "-635px",
+                        top: 0,
+                        zIndex: 998,
+                        opacity: 0,
+                        height: "auto",
+                      }}
+                    >
+                      <img
+                        className="img-fluid w-100"
+                        src={img2}
+                        alt="Image Description"
+                      />
+                    </div>
+                    <div
+                      className="js-slide g-bg-cover g-bg-black-opacity-0_1--after slick-slide"
+                      data-slick-index={2}
+                      aria-hidden="true"
+                      tabIndex={-1}
+                      style={{
+                        width: 635,
+                        position: "relative",
+                        left: "-1270px",
+                        top: 0,
+                        zIndex: 998,
+                        opacity: 0,
+                        height: "auto",
+                      }}
+                    >
+                      <img
+                        className="img-fluid w-100"
+                        src={img3}
+                        alt="Image Description"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="js-next u-arrow-v1 g-brd-around g-brd-white g-absolute-centered--y g-width-45 g-height-45 g-font-size-14 g-color-white g-color-primary--hover rounded-circle fa fa-angle-right g-right-40 slick-arrow"
+                  style={{}}
+                />
+              </div>
+              <div
+                id="carouselCus2"
+                className="js-carousel text-center u-carousel-v3 g-mx-minus-5 slick-initialized slick-slider slick-transform-off"
+                data-infinite="true"
+                data-center-mode="true"
+                data-slides-show={3}
+                data-is-thumbs="true"
+                data-focus-on-select="false"
+                data-nav-for="#carouselCus1"
+              >
+                <div className="slick-list draggable" style={{ padding: 0 }}>
+                  <div
+                    className="slick-track"
+                    style={{
+                      opacity: 1,
+                      width: 645,
+                      transform: "translate3d(0px, 0px, 0px)",
+                    }}
+                  >
+                    <div
+                      className="js-slide g-cursor-pointer g-px-5 slick-slide slick-current slick-center"
+                      data-slick-index={0}
+                      aria-hidden="true"
+                      tabIndex={0}
+                      style={{ width: 215, height: "auto" }}
+                    >
+                      <img
+                        className="img-fluid"
+                        src={img4}
+                        alt="Image Description"
+                      />
+                    </div>
+                    <div
+                      className="js-slide g-cursor-pointer g-px-5 slick-slide"
+                      data-slick-index={1}
+                      aria-hidden="true"
+                      tabIndex={0}
+                      style={{ width: 215, height: "auto" }}
+                    >
+                      <img
+                        className="img-fluid"
+                        src={img5}
+                        alt="Image Description"
+                      />
+                    </div>
+                    <div
+                      className="js-slide g-cursor-pointer g-px-5 slick-slide slick-center"
+                      data-slick-index={2}
+                      aria-hidden="true"
+                      tabIndex={0}
+                      style={{ width: 215, height: "auto" }}
+                    >
+                      <img
+                        className="img-fluid"
+                        src={img6}
+                        alt="Image Description"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* End Carousel */}
+            </div>
 
             <div className="col-lg-5">
               <div className="g-px-40--lg g-pt-70">
@@ -93,9 +242,7 @@ export const Item = () => {
                     <br />
                     Resistant Jacket
                   </h1>
-                  <p>
-                   {OneItem?.name}
-                  </p>
+                  <p>{OneItem?.name}</p>
                 </div>
                 {/* End Product Info */}
                 {/* Price */}
@@ -287,12 +434,18 @@ export const Item = () => {
                     <input
                       className="js-result form-control text-center g-font-size-13 rounded-0"
                       type="text"
-                      defaultValue={1}
+                      value={qty}
                       readOnly
                     />
                     <div className="input-group-addon d-flex align-items-center g-brd-gray-light-v2 g-width-30 g-bg-white g-font-size-13 rounded-0 g-pa-5">
-                      <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" />
-                      <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" />
+                      <i
+                        className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up"
+                        onClick={incQty}
+                      />
+                      <i
+                        className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down"
+                        onClick={decQty}
+                      />
                     </div>
                   </div>
                 </div>
@@ -303,6 +456,7 @@ export const Item = () => {
                     <button
                       className="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
                       type="button"
+                      // onClick={() => dispatch(addCart(first))}
                     >
                       Add to Cart{" "}
                       <i className="align-middle ml-2 icon-finance-100 u-line-icon-pro" />

@@ -1,5 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { incrementQty, decrementQty, selectCart, addCart } from "../../features/Cart/cartSlice";
 
 type Props = {
     id: number,
@@ -16,6 +18,13 @@ interface ItemProps {
 
 
 export const Single:React.FC<ItemProps> = ({ item }): JSX.Element => {
+
+
+  const dispatch = useAppDispatch();
+
+  const { totalQuant } = useAppSelector(selectCart);
+
+
     return (
         <>
             <div className="col-md-6 col-lg-4 g-px-10">
@@ -54,15 +63,15 @@ export const Single:React.FC<ItemProps> = ({ item }): JSX.Element => {
                     </span>
                     <ul className="list-inline g-color-gray-light-v2 g-font-size-14 g-line-height-1">
                       <li className="list-inline-item align-middle g-brd-right g-brd-gray-light-v3 g-pr-10 g-mr-6">
-                        <a
+                        <button
                           className="g-color-gray-dark-v5 g-color-primary--hover g-text-underline--none--hover"
-                          href="#"
                           title="Add to Cart"
                           data-toggle="tooltip"
                           data-placement="top"
+                          onClick={() => dispatch(addCart(item))}
                         >
                           <i className="icon-finance-100 u-line-icon-pro" />
-                        </a>
+                        </button>
                       </li>
                       <li className="list-inline-item align-middle">
                         <a

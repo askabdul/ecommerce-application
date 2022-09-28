@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../app/hooks";
-import { incrementQty, decrementQty } from "../../features/Cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { incrementQty, decrementQty, selectCart } from "../../features/Cart/cartSlice";
 
 
 
@@ -20,9 +20,26 @@ interface CartProps {
 
 
 export const Cart:React.FC<CartProps> = ({ cart }): JSX.Element => {
-    const [qty, setQty] = useState<number>(0);
+    const [qty, setQty] = useState<number>(1);
 
     const dispatch = useAppDispatch();
+
+    const { totalQuant } = useAppSelector(selectCart);
+
+    const incQty = () => {
+        setQty(qty => qty + 1)
+      }
+  
+      const decQty = () =>  {
+        setQty((prevQty) => {
+          if(prevQty - 1 < 1) return 1;
+          
+          return prevQty - 1
+  
+        })
+      }
+
+
 
   return (
     <>
@@ -48,17 +65,18 @@ export const Cart:React.FC<CartProps> = ({ cart }): JSX.Element => {
               className="js-result form-control text-center g-font-size-13 rounded-0 g-pa-0"
               type="text"
               defaultValue={1}
+              value={qty}
               readOnly
             />
             <div className="input-group-addon d-flex align-items-center g-width-30 g-brd-gray-light-v2 g-bg-white g-font-size-12 rounded-0 g-px-5 g-py-6">
-              <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" onClick={() => dispatch(incrementQty())}/>
-              <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" onClick={() => dispatch(decrementQty())}/>
+              <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" onClick={incQty}/>
+              <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" onClick={decQty}/>
             </div>
           </div>
         </td>
         <td className="text-right g-color-black">
           <span className="g-color-gray-dark-v2 g-font-size-13 mr-4">
-            $ {cart.quant * cart.price}
+            $ {qty * cart.price}
           </span>
           <span className="g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
             <i className="mt-auto fa fa-trash" />
