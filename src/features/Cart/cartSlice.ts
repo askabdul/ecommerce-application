@@ -21,15 +21,17 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     incrementQty: (state) => {
-        state.totalQuant += 1;
+        state.totalQuant = state.totalQuant + 1
     },
 
     decrementQty: state => {
-        if(state.totalPrice - 1 < 1) {
-            state.totalPrice = 1
-        }
+        if(state.totalQuant - 1 < 1) {
+            state.totalQuant = 1
+        } else {
 
-        state.totalPrice -= 1
+            state.totalQuant = state.totalQuant - 1
+        }
+        
     }
   },
   extraReducers: (builder) => {

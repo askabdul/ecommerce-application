@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useAppDispatch } from "../../app/hooks";
+import { incrementQty, decrementQty } from "../../features/Cart/cartSlice";
+
+
 
 type Props = {
     id: number,
@@ -17,6 +21,8 @@ interface CartProps {
 
 export const Cart:React.FC<CartProps> = ({ cart }): JSX.Element => {
     const [qty, setQty] = useState<number>(0);
+
+    const dispatch = useAppDispatch();
 
   return (
     <>
@@ -45,8 +51,8 @@ export const Cart:React.FC<CartProps> = ({ cart }): JSX.Element => {
               readOnly
             />
             <div className="input-group-addon d-flex align-items-center g-width-30 g-brd-gray-light-v2 g-bg-white g-font-size-12 rounded-0 g-px-5 g-py-6">
-              <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" />
-              <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" />
+              <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" onClick={() => dispatch(incrementQty())}/>
+              <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" onClick={() => dispatch(decrementQty())}/>
             </div>
           </div>
         </td>
