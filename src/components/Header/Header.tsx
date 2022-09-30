@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
-  const [showCart, setShowCart] = useState<boolean>(false);
+import { useAppSelector } from "../../app/hooks";
+import { selectCart } from "../../features/Cart/cartSlice";
 
-  const Basket = () => setShowCart(true);
-  const hideBasket = () => setShowCart(false);
+export const Header = () => {
+  
+  const { cartItems } = useAppSelector(selectCart);
 
   return (
     <>
@@ -112,7 +113,7 @@ export const Header = () => {
                     data-dropdown-animation-out="fadeOut"
                   >
                     <i className="d-inline-block icon-hotel-restaurant-105 u-line-icon-pro" />
-                    <span className="align-bottom g-font-size-11">(4)</span>
+                    <span className="align-bottom g-font-size-11">({cartItems.length})</span>
                   </Link>
                   <div
                     id="basket-bar"

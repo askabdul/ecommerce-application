@@ -8,7 +8,8 @@ type Props = {
     name: string,
     details: string,
     price: number,
-    images: string[]
+    quant: number,
+    image: string
 }
 
 interface ItemProps {
@@ -64,7 +65,7 @@ export const Single:React.FC<ItemProps> = ({ item }): JSX.Element => {
                     <ul className="list-inline g-color-gray-light-v2 g-font-size-14 g-line-height-1">
                       <li className="list-inline-item align-middle g-brd-right g-brd-gray-light-v3 g-pr-10 g-mr-6">
                         <button
-                          className="g-color-gray-dark-v5 g-color-primary--hover g-text-underline--none--hover"
+                          className="btn btn-block g-color-primary--hover g-text-underline--none--hover"
                           title="Add to Cart"
                           data-toggle="tooltip"
                           data-placement="top"

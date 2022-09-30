@@ -3,7 +3,8 @@ export interface item {
     name: string,
     details: string,
     price: number,
-    images: string[]
+    quant: number,
+    image: string
 }
 
 
@@ -23,21 +24,26 @@ export const AllItems: item[] = [
         name: 'Shoes',
         details: 'Summer shoes for comfort',
         price: 500,
-        images: ['']
+        quant: 1,
+        image: ''
     },
     {
         id: 2,
         name: 'Shirts',
         details: 'Summer shirts for cooling yourself',
         price: 300,
-        images: ['']
+        quant: 1,
+        image: ''
+
     },
     {
         id: 3,
         name: 'Bracelets',
         details: 'Handling that engagement party well',
         price: 640,
-        images: ['']
+        quant: 1,
+        image: ''
+
     },
     {
         id: 4,
@@ -45,43 +51,54 @@ export const AllItems: item[] = [
         name: 'Belts',
         details: 'Summer shoes for comfort',
         price: 206,
-        images: ['']
+        quant: 1,
+        image: ''
+
     },
     {
         id: 5,
-
         name: 'Caps',
         details: 'Shield yourself from the sun',
         price: 500,
-        images: ['']
+        quant: 1,
+        image: '',
     },
+
     {
         id: 6,
         name: 'Bags',
         details: 'Add bagging to your collection',
         price: 340,
-        images: ['']
+        quant: 1,
+        image: ''
+
     },
     {
         id: 7,
         name: 'Sports',
         details: 'Summer shoes for comfort',
         price: 90,
-        images: ['']
+        quant: 1,
+        image: ''
+
     },
     {
         id: 8,
         name: 'Work',
         details: 'Summer shoes for comfort',
         price: 100,
-        images: ['']
+        quant: 1,
+        image: ''
+
     },
     {
         id: 9,
         name: 'Hiking',
         details: 'Summer shoes for comfort',
+        quant: 1,
         price: 100,
-        images: ['']
+        image: ''
+
     },
 ]
 

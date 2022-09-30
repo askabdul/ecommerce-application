@@ -65,11 +65,11 @@ export const Cart:React.FC<CartProps> = ({ cart }): JSX.Element => {
               className="js-result form-control text-center g-font-size-13 rounded-0 g-pa-0"
               type="text"
               defaultValue={1}
-              value={qty}
+              value={cart.quant}
               readOnly
             />
             <div className="input-group-addon d-flex align-items-center g-width-30 g-brd-gray-light-v2 g-bg-white g-font-size-12 rounded-0 g-px-5 g-py-6">
-              <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" onClick={incQty}/>
+              <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" onClick={() => dispatch(incrementQty(cart))}/>
               <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" onClick={decQty}/>
             </div>
           </div>

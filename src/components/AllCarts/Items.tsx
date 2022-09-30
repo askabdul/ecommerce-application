@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { AllCarts } from "../../database/items";
+import { useAppSelector } from "../../app/hooks";
 import { Cart } from "../Cart/Cart";
+import { selectCart } from "../../features/Cart/cartSlice";
+import { EmptyCart } from "../EmptyCart/EmptyCart";
 
 export const Items = () => {
   const [OneActive, setOneActive] = useState<string>("active");
@@ -10,6 +13,9 @@ export const Items = () => {
   const stepOne = useRef<HTMLDivElement | null>(null);
   const stepTwo = useRef<HTMLDivElement | null>(null);
   const stepThree = useRef<HTMLDivElement | null>(null);
+
+  const { cartItems } = useAppSelector(selectCart);
+
 
   const jumpFirst = () => {
     stepOne.current?.classList.remove("active");
@@ -73,6 +79,8 @@ export const Items = () => {
 
   return (
     <>
+
+    {cartItems.length < 1 ? <EmptyCart /> : 
       <div>
         {/* Breadcrumbs */}
         <section className="g-brd-bottom g-brd-gray-light-v4 g-py-30">
@@ -176,8 +184,9 @@ export const Items = () => {
                           </tr>
                         </thead>
                         <tbody>
+
                           {
-                            AllCarts.map((cart) => (
+                            cartItems.map((cart) => (
                               <Cart key={cart.id} cart={cart}/>
                             ))
                           }
@@ -1371,6 +1380,7 @@ export const Items = () => {
         </div>
         {/* End Call to Action */}
       </div>
+}
     </>
   );
 };
