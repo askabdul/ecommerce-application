@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { incrementQty, decrementQty, selectCart } from "../../features/Cart/cartSlice";
 
@@ -24,7 +24,7 @@ export const Cart:React.FC<CartProps> = ({ cart }): JSX.Element => {
 
     const dispatch = useAppDispatch();
 
-    const { totalQuant } = useAppSelector(selectCart);
+    let { totalQuant } = useAppSelector(selectCart);
 
     const incQty = () => {
         setQty(qty => qty + 1)
@@ -35,10 +35,9 @@ export const Cart:React.FC<CartProps> = ({ cart }): JSX.Element => {
           if(prevQty - 1 < 1) return 1;
           
           return prevQty - 1
-  
+          
         })
       }
-
 
 
   return (
@@ -61,22 +60,21 @@ export const Cart:React.FC<CartProps> = ({ cart }): JSX.Element => {
         <td className="g-color-gray-dark-v2 g-font-size-13">$ {cart.price}</td>
         <td>
           <div className="js-quantity input-group u-quantity-v1 g-width-80 g-brd-primary--focus">
-            <input
+            {/* <input
               className="js-result form-control text-center g-font-size-13 rounded-0 g-pa-0"
-              type="text"
-              defaultValue={1}
-              value={cart.quant}
-              readOnly
-            />
+              type="number"
+              value={totalQuant}
+            /> */}
+            <span>{cart.quant}</span>
             <div className="input-group-addon d-flex align-items-center g-width-30 g-brd-gray-light-v2 g-bg-white g-font-size-12 rounded-0 g-px-5 g-py-6">
               <i className="js-plus g-color-gray g-color-primary--hover fa fa-angle-up" onClick={() => dispatch(incrementQty(cart))}/>
-              <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" onClick={decQty}/>
+              <i className="js-minus g-color-gray g-color-primary--hover fa fa-angle-down" onClick={() => dispatch(decrementQty(cart))}/>
             </div>
           </div>
         </td>
         <td className="text-right g-color-black">
           <span className="g-color-gray-dark-v2 g-font-size-13 mr-4">
-            $ {qty * cart.price}
+            $ {cart.quant * cart.price}
           </span>
           <span className="g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
             <i className="mt-auto fa fa-trash" />

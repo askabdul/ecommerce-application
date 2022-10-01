@@ -6,12 +6,12 @@ import { selectCart } from "../../features/Cart/cartSlice";
 
 export const Header = () => {
   
-  const { cartItems } = useAppSelector(selectCart);
+  let { cartItems } = useAppSelector(selectCart);
 
   return (
     <>
       {/* Header */}
-      <header id="js-header" className="u-header u-header--static u-shadow-v19">
+      <header id="js-header" className="u-header u-header--sticky u-shadow-v19" style={{position: 'sticky', top: 0, background: "#fff"}}>
         {/* Top Bar */}
         <div className="u-header__section g-brd-bottom g-brd-gray-light-v4 g-transition-0_3">
           <div className="container">

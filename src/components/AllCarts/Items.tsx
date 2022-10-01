@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { AllCarts } from "../../database/items";
 import { useAppSelector } from "../../app/hooks";
 import { Cart } from "../Cart/Cart";
 import { selectCart } from "../../features/Cart/cartSlice";
@@ -14,7 +13,7 @@ export const Items = () => {
   const stepTwo = useRef<HTMLDivElement | null>(null);
   const stepThree = useRef<HTMLDivElement | null>(null);
 
-  const { cartItems } = useAppSelector(selectCart);
+  let { cartItems } = useAppSelector(selectCart);
 
 
   const jumpFirst = () => {
@@ -919,7 +918,7 @@ export const Items = () => {
                               aria-expanded="false"
                               aria-controls="accordion-03-body-03"
                             >
-                              3 items in cart
+                              { cartItems.length } items in cart
                               <span className="ml-3 fa fa-angle-down" />
                             </a>
                           </h5>
@@ -932,70 +931,28 @@ export const Items = () => {
                         >
                           <div className="g-py-15">
                             <ul className="list-unstyled mb-3">
-                              {/* Product */}
-                              <li className="d-flex justify-content-start">
+                            {
+                            cartItems.map((cart) => (
+                              <li className="d-flex justify-content-start" key={cart.id}>
                                 <img
                                   className="g-width-100 g-height-100 mr-3"
                                   src="assets/img-temp/150x150/img6.jpg"
                                   alt="Image Description"
                                 />
                                 <div className="d-block">
-                                  <h4 className="h6 g-color-black">Sneaker</h4>
+                                  <h4 className="h6 g-color-black">{cart.name}</h4>
                                   <ul className="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_4 mb-1">
                                     <li>Color: Black</li>
                                     <li>Size: MD</li>
-                                    <li>QTY: 1</li>
+                                    <li>QTY: {cart.quant}</li>
                                   </ul>
                                   <span className="d-block g-color-black g-font-weight-400">
-                                    $ 87.00
+                                    $ {cart.price}
                                   </span>
                                 </div>
                               </li>
-                              {/* End Product */}
-                              {/* Product */}
-                              <li className="d-flex justify-content-start g-brd-top g-brd-gray-light-v3 pt-4 mt-4">
-                                <img
-                                  className="g-width-100 g-height-100 mr-3"
-                                  src="assets/img-temp/150x150/img3.jpg"
-                                  alt="Image Description"
-                                />
-                                <div className="d-block">
-                                  <h4 className="h6 g-color-black">
-                                    Chukka Shoes
-                                  </h4>
-                                  <ul className="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_4 mb-1">
-                                    <li>Color: Black</li>
-                                    <li>Size: MD</li>
-                                    <li>QTY: 2</li>
-                                  </ul>
-                                  <span className="d-block g-color-black g-font-weight-400">
-                                    $ 160.00
-                                  </span>
-                                </div>
-                              </li>
-                              {/* End Product */}
-                              {/* Product */}
-                              <li className="d-flex justify-content-start g-brd-top g-brd-gray-light-v3 pt-4 mt-4">
-                                <img
-                                  className="g-width-100 g-height-100 mr-3"
-                                  src="assets/img-temp/150x150/img7.jpg"
-                                  alt="Image Description"
-                                />
-                                <div className="d-block">
-                                  <h4 className="h6 g-color-black">
-                                    Desk Clock
-                                  </h4>
-                                  <ul className="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_4 mb-1">
-                                    <li>Color: Brown Wood</li>
-                                    <li>Type: Desk</li>
-                                    <li>QTY: 1</li>
-                                  </ul>
-                                  <span className="d-block g-color-black g-font-weight-400">
-                                    $ 47.00
-                                  </span>
-                                </div>
-                              </li>
-                              {/* End Product */}
+                            ))
+                          }
                             </ul>
                           </div>
                         </div>
@@ -1200,7 +1157,7 @@ export const Items = () => {
                               aria-expanded="false"
                               aria-controls="accordion-05-body-05"
                             >
-                              3 items in cart
+                              { cartItems.length } items in cart
                               <span className="ml-3 fa fa-angle-down" />
                             </a>
                           </h5>
@@ -1213,70 +1170,28 @@ export const Items = () => {
                         >
                           <div className="g-py-15">
                             <ul className="list-unstyled mb-3">
-                              {/* Product */}
-                              <li className="d-flex justify-content-start">
+                              {
+                            cartItems.map((cart) => (
+                              <li className="d-flex justify-content-start" key={cart.id}>
                                 <img
                                   className="g-width-100 g-height-100 mr-3"
                                   src="assets/img-temp/150x150/img6.jpg"
                                   alt="Image Description"
                                 />
                                 <div className="d-block">
-                                  <h4 className="h6 g-color-black">Sneaker</h4>
+                                  <h4 className="h6 g-color-black">{cart.name}</h4>
                                   <ul className="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_4 mb-1">
                                     <li>Color: Black</li>
                                     <li>Size: MD</li>
-                                    <li>QTY: 1</li>
+                                    <li>QTY: {cart.quant}</li>
                                   </ul>
                                   <span className="d-block g-color-black g-font-weight-400">
-                                    $ 87.00
+                                    $ {cart.price}
                                   </span>
                                 </div>
                               </li>
-                              {/* End Product */}
-                              {/* Product */}
-                              <li className="d-flex justify-content-start g-brd-top g-brd-gray-light-v3 pt-4 mt-4">
-                                <img
-                                  className="g-width-100 g-height-100 mr-3"
-                                  src="assets/img-temp/150x150/img3.jpg"
-                                  alt="Image Description"
-                                />
-                                <div className="d-block">
-                                  <h4 className="h6 g-color-black">
-                                    Chukka Shoes
-                                  </h4>
-                                  <ul className="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_4 mb-1">
-                                    <li>Color: Black</li>
-                                    <li>Size: MD</li>
-                                    <li>QTY: 2</li>
-                                  </ul>
-                                  <span className="d-block g-color-black g-font-weight-400">
-                                    $ 160.00
-                                  </span>
-                                </div>
-                              </li>
-                              {/* End Product */}
-                              {/* Product */}
-                              <li className="d-flex justify-content-start g-brd-top g-brd-gray-light-v3 pt-4 mt-4">
-                                <img
-                                  className="g-width-100 g-height-100 mr-3"
-                                  src="assets/img-temp/150x150/img7.jpg"
-                                  alt="Image Description"
-                                />
-                                <div className="d-block">
-                                  <h4 className="h6 g-color-black">
-                                    Desk Clock
-                                  </h4>
-                                  <ul className="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_4 mb-1">
-                                    <li>Color: Brown Wood</li>
-                                    <li>Type: Desk</li>
-                                    <li>QTY: 1</li>
-                                  </ul>
-                                  <span className="d-block g-color-black g-font-weight-400">
-                                    $ 47.00
-                                  </span>
-                                </div>
-                              </li>
-                              {/* End Product */}
+                            ))
+                          }
                             </ul>
                           </div>
                         </div>

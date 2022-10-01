@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from "../../app/store";
-import { cart, AllCarts, item } from "./../../database/items";
+import {item } from "./../../database/items";
 
 export interface CounterState {
   cartItems: item[];
@@ -19,17 +19,20 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     incrementQty: (state, action: PayloadAction<item>) => {
-        state.cartItems.map((cart) => {
-            return cart.id === action.payload.id ? { ...cart, quant: cart.quant + action.payload.quant} : {cart}
-        })
+
+        console.log(action);
+        
+       state.cartItems = state.cartItems.map((cart) => {
+            return cart.id === action.payload.id ? { ...cart, quant: cart.quant + 1} : {...cart}
+        });
+
+        console.log(current(state))
     },
 
-    decrementQty: (state) => {
-      if (state.totalQuant - 1 < 1) {
-        state.totalQuant = 1;
-      } else {
-        state.totalQuant = state.totalQuant - 1;
-      }
+    decrementQty: (state, action: PayloadAction<item>) => {
+        state.cartItems = state.cartItems.map((cart) => {
+            return cart.id === action.payload.id ? { ...cart, quant: cart.quant - 1 < 1 ? 1 : cart.quant -1 } : {...cart}
+        });
     },
     addCart: (state, action: PayloadAction<item>) => {
       state.cartItems.push(action.payload);

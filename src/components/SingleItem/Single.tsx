@@ -23,7 +23,7 @@ export const Single:React.FC<ItemProps> = ({ item }): JSX.Element => {
 
   const dispatch = useAppDispatch();
 
-  const { totalQuant } = useAppSelector(selectCart);
+  let { totalQuant } = useAppSelector(selectCart);
 
 
     return (
