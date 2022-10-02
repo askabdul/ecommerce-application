@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { incrementQty, decrementQty, selectCart } from "../../features/Cart/cartSlice";
+import { incrementQty, decrementQty, selectCart, calculateItems, deleteCart } from "../../features/Cart/cartSlice";
 
 
 
@@ -20,25 +20,14 @@ interface CartProps {
 
 
 export const Cart:React.FC<CartProps> = ({ cart }): JSX.Element => {
-    const [qty, setQty] = useState<number>(1);
 
     const dispatch = useAppDispatch();
 
-    let { totalQuant } = useAppSelector(selectCart);
+    let { totalQuant, cartItems } = useAppSelector(selectCart);
 
-    const incQty = () => {
-        setQty(qty => qty + 1)
-      }
-  
-      const decQty = () =>  {
-        setQty((prevQty) => {
-          if(prevQty - 1 < 1) return 1;
-          
-          return prevQty - 1
-          
-        })
-      }
-
+    useEffect(() => {
+      dispatch(calculateItems())
+    },[dispatch, cartItems])
 
   return (
     <>
@@ -77,7 +66,7 @@ export const Cart:React.FC<CartProps> = ({ cart }): JSX.Element => {
             $ {cart.quant * cart.price}
           </span>
           <span className="g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
-            <i className="mt-auto fa fa-trash" />
+            <i className="mt-auto fa fa-trash" onClick={() => dispatch(deleteCart(cart))}/>
           </span>
         </td>
       </tr>
